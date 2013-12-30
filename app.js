@@ -37,7 +37,8 @@ function getAndroidUsers(id) {
      for (var i=0;i<response.data.length;i++) {
      var userInfo = response.data[i];
      var userid= userInfo.id;               
-     	 if( userInfo.devices != undefined && userInfo.devices[0].os==="Android"){     	 	
+     	 if( userInfo.devices != undefined && userInfo.devices[0].os==="Android"){
+     	 	totalCount++;
      	 	var name=userInfo.name;
      	 	var picture_url = userInfo.picture.data.url;
      	 	var link = userInfo.link
@@ -54,13 +55,6 @@ function getAndroidUsers(id) {
      	 	newDiv.appendChild(profileLink);     	      	 	
             document.getElementById('friends').appendChild(newDiv);
      }}
-      FB.ui({
-  method: 'feed',
-  name: 'My Android Friends',
-  link: 'http://phatak-dev.github.io/fbandroidfriends/',
-  caption: totalCount+" friends use Android" 
-   }, function(response){});
-
   });
  }
 
