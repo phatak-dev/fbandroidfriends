@@ -6,18 +6,19 @@ function Login()
 		   	    var loginButton = document.getElementById('loginButton');		   	    
 		   	    loginButton.parentNode.removeChild(loginButton);		   	    
 		   	    var message_span = document.getElementById('topMessageSpan');
-		   	    message_span.innerHTML="Fetching friends information....."
-		    	getAndroidUsers()
+		   	    message_span.innerHTML="Fetching friends information.....";                
+                getAndroidUsers(response.authResponse.userID);
+		    	
   			} else 
   			{
   	    	 console.log('User cancelled login or did not fully authorize.');
    			}
-		 },{scope: 'email'});
+		 },{scope: 'email,user_friends'});
 	
  } 
 
-function getAndroidUsers() {
-  FB.api('/1249538109/friends/?fields=name,devices,picture.width(100).height(100),link', function(response) {  	 
+function getAndroidUsers(id) {
+  FB.api('/'+id+'/friends/?fields=name,devices,picture.width(100).height(100),link', function(response) {  	 
      var totalCount=0;  	
      var totalFriends = response.data.length;
      var topDiv = document.createElement('topDiv');
