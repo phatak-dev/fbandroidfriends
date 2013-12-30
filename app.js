@@ -31,7 +31,7 @@ function getAndroidUsers(id) {
      }
      if(totalCount>0) {
       	var message_span = document.getElementById('topMessageSpan');
-      	message_span.innerHTML="Out of "+totalFriends+" friends " +totalCount+" friends use Android";      	
+      	message_span.innerHTML=totalCount+" friends are using Android";      	
      }
      //append all the childs
      for (var i=0;i<response.data.length;i++) {
